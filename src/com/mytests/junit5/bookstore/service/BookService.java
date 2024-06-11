@@ -29,4 +29,29 @@ public class BookService {
 		return null;
 	}
 	
+	public String[] getBookIdsByPublisher(String publisher) {
+		List<String> bookIds = new ArrayList<>();
+		
+		for(Book book:listOfBooks) {
+			if(publisher.equals(book.getPublisher())) {
+				bookIds.add(book.getBookId());
+			}
+		}
+		
+		return bookIds.toArray(new String[bookIds.size()]);
+		
+	}
+	
+	public List<String> getBookTitlesByPublisher(String publisher){
+		List<String> bookTitles = new ArrayList<>();
+		for(Book book: listOfBooks) {
+			if(publisher.equals(book.getPublisher())) {
+				bookTitles.add(book.getTitle());
+			}
+		}
+		
+		return bookTitles;
+		
+	}
+	
 }
