@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.mytests.junit5.bookstore.exception.BookNotFoundException;
 import com.mytests.junit5.bookstore.model.Book;
 
 public class BookService {
@@ -52,6 +53,15 @@ public class BookService {
 		
 		return bookTitles;
 		
+	}
+	
+	public Book getBookByTitle(String bookTitle) {
+		for(Book book : listOfBooks) {
+			if(bookTitle.equals(book.getTitle())) {
+				return book;
+			}
+		}
+		throw new BookNotFoundException("Book not found in the BookStore");
 	}
 	
 }
